@@ -47,7 +47,7 @@ def aggregate_by_region(dataframe: pd.DataFrame, mapping: ColumnMapping) -> pd.D
     grouped = cast(
         pd.DataFrame,
         grouped_source.groupby(mapping.region, dropna=False, as_index=False).agg(
-        total_amount=(mapping.amount, "sum")
+            total_amount=(mapping.amount, "sum")
         ),
     )
     grouped = grouped.rename(columns={mapping.region: "region"})
@@ -63,7 +63,7 @@ def aggregate_by_flow(dataframe: pd.DataFrame, mapping: ColumnMapping) -> pd.Dat
     grouped = cast(
         pd.DataFrame,
         grouped_source.groupby(mapping.flow, dropna=False, as_index=False).agg(
-        total_amount=(mapping.amount, "sum")
+            total_amount=(mapping.amount, "sum")
         ),
     )
     grouped = grouped.rename(columns={mapping.flow: "flow"})

@@ -12,7 +12,7 @@ from typing import Any, cast
 import pandas as pd
 import streamlit as st
 
-# â”€â”€ Paths â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+# Paths
 _DASHBOARD_DIR = Path(__file__).resolve().parent
 _STREAMLIT_CONFIG = _DASHBOARD_DIR.parent / ".streamlit" / "config.toml"
 _THEMES_DIR = _DASHBOARD_DIR.parent / "themes"
@@ -32,7 +32,7 @@ def _apply_streamlit_config(theme_name: str) -> None:
     """
     src = _THEMES_DIR / _THEME_CONFIG_FILES[theme_name]
     if not src.exists():
-        return  # themes folder not deployed â€“ skip silently
+        return  # Themes folder not deployed; skip silently.
     _STREAMLIT_CONFIG.parent.mkdir(parents=True, exist_ok=True)
     shutil.copy(src, _STREAMLIT_CONFIG)
 
@@ -85,56 +85,56 @@ class ThemePalette:
 
 
 THEMES: dict[str, ThemePalette] = {
-    # â”€â”€ Finance Pro â”€â”€ Bleu institutionnel / vert / fond clair â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+    # Finance Pro
     "Finance Pro": ThemePalette(
-        primary="#1E40AF",        # Bleu institutionnel
-        secondary="#059669",      # Vert finance
-        accent="#0EA5E9",         # Bleu ciel (hover / focus)
-        success="#10B981",        # Vert Ã©meraude (hausse)
-        alert="#EF4444",          # Rouge corail (baisse)
-        background="#F8FAFC",     # Blanc cassÃ© (fond principal)
-        text="#0F2044",           # Bleu marine foncÃ© (texte principal)
-        text_secondary="#64748B", # Gris ardoise (texte secondaire)
+        primary="#1E40AF",
+        secondary="#059669",
+        accent="#0EA5E9",
+        success="#10B981",
+        alert="#EF4444",
+        background="#F8FAFC",
+        text="#1D3975",
+        text_secondary="#64748B",
         sidebar_background="#FFFFFF",
-        sidebar_text="#0F2044",
+        sidebar_text="#1D3975",
         card_background="#FFFFFF",
-        border="#E2E8F0",         # Gris clair
+        border="#E2E8F0",
         button_text="#FFFFFF",
         shadow_color="rgba(15, 32, 68, 0.10)",
         series=("#1E40AF", "#059669", "#0EA5E9", "#8B5CF6", "#F59E0B"),
     ),
-    # â”€â”€ Dark Mode â”€â”€ Fond noir graphite / accents bleu & vert nÃ©on â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+    # Dark Mode
     "Dark Mode": ThemePalette(
-        primary="#58A6FF",        # Bleu Ã©lectrique
-        secondary="#3FB950",      # Vert nÃ©on doux
-        accent="#79C0FF",         # Bleu clair (hover / focus)
-        success="#3FB950",        # Vert nÃ©on (hausse)
-        alert="#F85149",          # Rouge vif (baisse)
-        background="#0D1117",     # Noir graphite (fond principal)
-        text="#E6EDF3",           # Blanc doux (texte principal)
-        text_secondary="#8B949E", # Gris clair (texte secondaire)
-        sidebar_background="#161B22",
+        primary="#58A6FF",
+        secondary="#3FB950",
+        accent="#79C0FF",
+        success="#3FB950",
+        alert="#F85149",
+        background="#0D1117",
+        text="#E6EDF3",
+        text_secondary="#8B949E",
+        sidebar_background="#4D6D9A",
         sidebar_text="#E6EDF3",
-        card_background="#161B22",
-        border="#30363D",         # Gris subtil
-        button_text="#0D1117",    # Texte sombre sur fond clair nÃ©on
+        card_background="#4D6D9A",
+        border="#30363D",
+        button_text="#0D1117",
         shadow_color="rgba(0, 0, 0, 0.40)",
         series=("#58A6FF", "#3FB950", "#D2A8FF", "#FFA657", "#FF7B72"),
     ),
-    # â”€â”€ Executive Mode â”€â”€ Minimaliste noir & or / fond blanc â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+    # Executive Mode
     "Executive Mode": ThemePalette(
-        primary="#1F2937",        # Anthracite (titres / accent fort)
-        secondary="#B45309",      # Or discret (boutons secondaires)
-        accent="#374151",         # Gris foncÃ© (hover / focus)
-        success="#047857",        # Vert sobre (hausse)
-        alert="#B91C1C",          # Rouge sobre (baisse)
-        background="#FFFFFF",     # Blanc pur (fond principal)
-        text="#111827",           # Noir profond (texte principal)
-        text_secondary="#6B7280", # Gris moyen (texte secondaire)
+        primary="#1F2937",
+        secondary="#B45309",
+        accent="#374151",
+        success="#047857",
+        alert="#B91C1C",
+        background="#FFFFFF",
+        text="#0A2A6EEC",
+        text_secondary="#6B7280",
         sidebar_background="#F9FAFB",
-        sidebar_text="#111827",
+        sidebar_text="#0A2A6EEC",
         card_background="#F9FAFB",
-        border="#D1D5DB",         # Gris fin
+        border="#D1D5DB",
         button_text="#FFFFFF",
         shadow_color="rgba(17, 24, 39, 0.08)",
         series=("#1F2937", "#4B5563", "#9CA3AF", "#D1D5DB", "#B45309"),
@@ -166,7 +166,7 @@ def main() -> None:
 
     palette = THEMES[selected_theme]
 
-    # â”€â”€ Theme change: copy config.toml and rerun so Streamlit reloads it â”€â”€â”€â”€
+    # Theme change
     if selected_theme != st.session_state["active_theme"]:
         st.session_state["active_theme"] = selected_theme
         _apply_streamlit_config(selected_theme)
@@ -443,7 +443,7 @@ def _apply_theme_style(palette: ThemePalette) -> None:
             {series_css}
           }}
 
-          /* â”€â”€ Global â”€â”€ */
+          /* Global */
           body {{
             background-color: var(--bg);
             color: var(--text);
@@ -453,17 +453,17 @@ def _apply_theme_style(palette: ThemePalette) -> None:
             color: var(--text);
           }}
 
-          /* â”€â”€ App container â”€â”€ */
+          /* App container */
           [data-testid="stAppViewContainer"] {{
             background-color: var(--bg);
           }}
 
-          /* â”€â”€ Headings â”€â”€ */
+          /* Headings */
           h1, h2, h3 {{
             color: var(--primary) !important;
           }}
 
-          /* â”€â”€ Sidebar â”€â”€ */
+          /* Sidebar */
           [data-testid="stSidebar"] {{
             background: var(--sidebar-bg);
             border-right: 1px solid var(--border);
@@ -472,7 +472,7 @@ def _apply_theme_style(palette: ThemePalette) -> None:
             color: var(--sidebar-text) !important;
           }}
 
-          /* â”€â”€ Streamlit metric widget â”€â”€ */
+          /* Streamlit metric widget */
           .stMetric {{
             background-color: var(--card-bg);
             border-radius: 10px;
@@ -480,7 +480,7 @@ def _apply_theme_style(palette: ThemePalette) -> None:
             border: 1px solid var(--border);
           }}
 
-          /* â”€â”€ KPI cards â”€â”€ */
+          /* KPI cards */
           .kpi-card {{
             background: var(--card-bg);
             border: 1px solid var(--border);
@@ -503,7 +503,7 @@ def _apply_theme_style(palette: ThemePalette) -> None:
             word-break: break-word;
           }}
 
-          /* â”€â”€ Buttons â”€â”€ */
+          /* Buttons */
           .stButton > button {{
             border: 1px solid var(--border) !important;
             border-radius: 10px !important;
@@ -525,7 +525,7 @@ def _apply_theme_style(palette: ThemePalette) -> None:
             box-shadow: 0 0 0 2px var(--accent);
           }}
 
-          /* â”€â”€ Entrance animation â”€â”€ */
+          /* Entrance animation */
           @keyframes fade-slide {{
             from {{
               opacity: 0;
@@ -537,7 +537,7 @@ def _apply_theme_style(palette: ThemePalette) -> None:
             }}
           }}
 
-          /* â”€â”€ Responsive â”€â”€ */
+          /* Responsive */
           @media (max-width: 900px) {{
             .kpi-card {{
               min-height: 92px;
