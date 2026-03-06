@@ -1,0 +1,30 @@
+[MASTER]
+py-version=3.11
+persistent=no
+jobs=1
+ignore=.venv,data
+
+[MESSAGES CONTROL]
+enable=all
+disable=
+    fixme,
+    too-few-public-methods,
+    locally-disabled,
+    suppressed-message
+
+[FORMAT]
+max-line-length=220
+
+[DESIGN]
+max-args=8
+max-locals=40
+max-returns=8
+max-branches=30
+max-statements=140
+
+[BASIC]
+good-names=
+    df,
+    go,
+    px,
+    st

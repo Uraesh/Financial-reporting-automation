@@ -1,0 +1,27 @@
+{
+  "include": [
+    "dashboard",
+    "scripts",
+    "main.py"
+  ],
+  "exclude": [
+    "**/__pycache__",
+    ".venv",
+    "data"
+  ],
+  "venvPath": ".",
+  "venv": ".venv",
+  "executionEnvironments": [
+    {
+      "root": ".",
+      "extraPaths": [
+        ".venv/Lib/site-packages"
+      ]
+    }
+  ],
+  "typeCheckingMode": "strict",
+  "pythonVersion": "3.11",
+  "reportMissingTypeStubs": "warning",
+  "reportUnknownMemberType": "warning",
+  "reportUnknownVariableType": "warning"
+}
